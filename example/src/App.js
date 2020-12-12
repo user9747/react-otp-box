@@ -10,11 +10,12 @@ const App = () => {
     onChange={(e) => console.log(e)}
     inputStyle={(n) => {
       console.log(n)
-      if (n === 0)
-        return { background: "red" }
+      if (n % 2)
+        return { border: "1px solid red" }
       else
-        return { background: "green" }
+        return { border: "1px solid green" }
     }}
+    gap="30px"
   />
 }
 

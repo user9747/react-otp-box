@@ -1,23 +1,15 @@
-import React, { useEffect, useState, useRef, memo } from 'react'
+import React, { useEffect, useState, useRef, memo,Fragment } from 'react'
 import styled from 'styled-components'
 
 const IB = styled.input`
   border: none;
   outline: none;
-  background: grey;
+  background: #dedede;
   border-radius: 10px;
   color: black;
-  line-height: 37px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 1px;
   width: 30px;
   height: 30px;
-  padding: 5px;
   text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 0 5px;
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -25,12 +17,14 @@ const IB = styled.input`
     appearance: none;
     margin: 0;
   }
+  -moz-appearance: textfield;
 `
 const InputBox = memo(IB)
 
 interface Props {
   autoFocus?: boolean
   n?: number
+  gap?: string
   onChange: (e: string) => void
   inputStyle?: (n?: number) => React.CSSProperties
 }
@@ -38,6 +32,7 @@ interface Props {
 const ReactOtp = ({
   autoFocus = false,
   n = 3,
+  gap = '10px',
   onChange,
   inputStyle
 }: Props) => {
@@ -102,13 +97,16 @@ const ReactOtp = ({
             style={inputStyle ? inputStyle(index) : {}}
           />
         ) : (
-          <InputBox
-            type='number'
-            key={index}
-            maxLength={1}
-            value={otp[index] || ''}
-            style={inputStyle ? inputStyle(index) : {}}
-          />
+          <Fragment>
+            <div style={{ width: gap }} />
+            <InputBox
+              type='number'
+              key={index}
+              maxLength={1}
+              value={otp[index] || ''}
+              style={inputStyle ? inputStyle(index) : {}}
+            />
+          </Fragment>
         )
       )}
     </div>
