@@ -1,7 +1,7 @@
 import React from 'react'
 
-import ReactOtp from 'react-otp'
-import 'react-otp/dist/index.css'
+import ReactOtp from 'react-otp-box'
+import 'react-otp-box/dist/index.css'
 
 const App = () => {
   return <ReactOtp
